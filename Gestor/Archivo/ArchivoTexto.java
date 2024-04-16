@@ -5,9 +5,9 @@ import java.io.*;
 public final class ArchivoTexto extends ControlArchivos implements iFileText {
     private File file;
     private FileReader fr;
-    private BufferedReader br;
-    private FileWriter fw;
-    private BufferedWriter bw;
+    private BufferedReader br; // leer el archivo
+    private FileWriter fw; // prepara el archivo para escritura
+    private BufferedWriter bw; //buffer es un fragmento pequeño de memoria, guarda lo que sea
     private boolean ArchivoExiste;
     private boolean ModoLectura;
     private boolean ModoEscritura;

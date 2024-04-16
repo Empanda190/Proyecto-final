@@ -1,14 +1,17 @@
-
 package Gestor.Empresarial.Contrato;
 import Gestor.Empresarial.Contrato.*;
+import Gestor.Errores.*;
+
 public final class Contrato {
     int id;
     int NoContrato;
     int annio;
     String horario;
     Cargos TipoCargo;
+    private GestionErrores error;
+
     public Contrato(int id){
-//poner algo
+        error = new GestionErrores();
     }
     public int getNoContrato() {
         return NoContrato;
