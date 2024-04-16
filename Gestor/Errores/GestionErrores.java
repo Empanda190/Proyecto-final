@@ -17,10 +17,13 @@ public final class GestionErrores {
         archivo=new ArchivoTexto("C:\\archivos\\errores.txt");
 
         listaErrores[0]="Empleado no identificado";
-        listaErrores[1]="Acceso Denegado";
+        listaErrores[1]="Usuario no encontrado";
         listaErrores[2]="Contraseña Errónea";
         listaErrores[3]="Empleado no encontrado al momento de registrar su contrato";
         listaErrores[4]="Empleado no encontrado al momento de buscar un contrato";
+        listaErrores[5]="Acceso Denegado";
+        listaErrores[6]="Error al crear el archivo";
+        listaErrores[7]="Error al editar el archivo";
     }
     private void CargarErrores(){
         //...
