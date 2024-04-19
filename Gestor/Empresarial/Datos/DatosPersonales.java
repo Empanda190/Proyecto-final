@@ -16,6 +16,7 @@ public abstract class DatosPersonales { //Esta clase ofrece herencia, no INSTANC
         return nombre;
     }
     protected void setNombre(String nombre) {
+
         this.nombre = nombre;
     }
     protected String getApellidos() {

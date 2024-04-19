@@ -35,7 +35,13 @@ import Gestor.Errores.*;
     public String getInfoEmpleado(int a){
         return "b";
     }
-    public String getInfoEmpleado(String a){
+
+        @java.lang.Override
+        public String getInfoEmpleado(String a) {
+            return null;
+        }
+
+        public String getInfoEmpleado(String a){
         return "c";
     }
     public void setAdscripcion(int a,String b){

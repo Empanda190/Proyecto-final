@@ -13,7 +13,7 @@ public final class GestionErrores {
     public GestionErrores(){
         //HashMap obtiene herencia de Map, map fue echa para ser heredable
         //tema de collection
-        error = new HashMap<Integer, String>();
+        error = new java.util.Map<java.lang.Integer, java.lang.String>();
         archivo=new ArchivoTexto("C:\\archivos\\errores.txt");
 
         listaErrores[0]="Empleado no identificado";
