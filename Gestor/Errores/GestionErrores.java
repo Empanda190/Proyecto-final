@@ -1,5 +1,6 @@
 package Gestor.Errores;
 
+
 import java.io.*;
 import Gestor.Archivo.*;
 import java.util.HashMap;
@@ -19,7 +20,7 @@ public final class GestionErrores {
 
         // Inicializamos el mapa de errores
         error = new HashMap<>();
-        archivo=new ArchivoTexto("C:\\archivos\\errores.txt");
+        archivo=new ArchivoTexto("C:\\Users\\karls\\OneDrive\\Documents\\Universidad\\5to cuatrimestre\\Enero-Abril2024\\Proyecto_Final");
 
         listaErrores[0]="Empleado no identificado";
         listaErrores[1]="Usuario no encontrado";

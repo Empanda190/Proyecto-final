@@ -41,8 +41,8 @@ import Gestor.Errores.*;
             return null;
         }
 
-        public String getInfoEmpleado(String a){
-        return "c";
+        public String getInfoEmpleado(String b, String c){
+        return "b";
     }
     public void setAdscripcion(int a,String b){
         //
