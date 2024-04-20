@@ -1,6 +1,9 @@
 package Gestor.Errores;
+
+import java.io.*;
 import Gestor.Archivo.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class GestionErrores {
     Map<Integer,String> error;
@@ -13,7 +16,9 @@ public final class GestionErrores {
     public GestionErrores(){
         //HashMap obtiene herencia de Map, map fue echa para ser heredable
         //tema de collection
-        error = new java.util.Map<java.lang.Integer, java.lang.String>();
+
+        // Inicializamos el mapa de errores
+        error = new HashMap<>();
         archivo=new ArchivoTexto("C:\\archivos\\errores.txt");
 
         listaErrores[0]="Empleado no identificado";
@@ -26,11 +31,26 @@ public final class GestionErrores {
         listaErrores[7]="Error al editar el archivo";
     }
     private void CargarErrores(){
-        //...
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("ruta_del_archivo.txt"));
+            String linea;
+            int contador = 0;
+            while ((linea = reader.readLine()) != null) {
+                listaErrores[contador] = linea;
+                contador++;
+                if (contador >= listaErrores.length) {
+                    break; // Evitar desbordamiento del arreglo
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo de errores: " + e.getMessage());
+        }
     }
     public void setNoError(int noError) {
         NoError = noError;
     }
+
     public String getError(int id){
         archivo.AbrirModoEscritura();
         archivo.escribir(listaErrores[id]);
@@ -38,9 +58,10 @@ public final class GestionErrores {
         return listaErrores[id];
     }
     public String getErrorTecnico(){
-        return "r";
+        return DescripcionTecnica;
     }
+
     public boolean ExisteError(){
-        return true;
+        return ExisteError;
     }
 }
