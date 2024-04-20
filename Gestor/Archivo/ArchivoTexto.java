@@ -126,7 +126,7 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
             } else {
                 // Abre el archivo en modo de lectura
                 FileReader reader = new FileReader(a);
-                this.bufferedReader = new BufferedReader(reader);
+                this.br = new BufferedReader(reader);
                 this.ModoLectura = true;
             }
             this.ArchivoExiste = true;
