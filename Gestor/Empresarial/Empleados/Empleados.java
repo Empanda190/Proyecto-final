@@ -1,70 +1,121 @@
 package Gestor.Empresarial.Empleados;
-import Gestor.Empresarial.Contrato.*;
-import Gestor.Errores.*;
 
-    public final class Empleados implements iEmpleados {
-        int i;
-        GestionErrores error;
+import Gestor.Empresarial.Contrato.Contrato; // Importamos la clase Contrato desde el paquete Contrato
+import Gestor.Empresarial.Datos.DatosEmpresariales;
+import Gestor.Empresarial.Datos.DatosPersonales;
+import Gestor.Errores.GestionErrores; // Importamos la clase GestionErrores desde el paquete Errores
+import Gestor.Empresarial.Contrato.Cargos;
 
+public final class Empleados implements iEmpleados {
+    int i;
+    GestionErrores error;
+    DatosPersonales datosPersonales;
+    DatosEmpresariales datosEmpresariales;
+    private Contrato contrato;
 
     //CONSTRUCTOR
     public Empleados() {
-        //
+        // Inicializar objetos necesarios
+        this.datosPersonales = new DatosPersonales();
+        this.datosEmpresariales = new DatosEmpresariales();
+        this.contrato = new Contrato();
     }
 
-    public void addDatosPersonales(String a,String b, String c){
-        //
-    }
-    public void addContrato(int a,int b,String c,Cargos d){
-        //
+    // Método para agregar datos personales de un empleado
+    public void addDatosPersonales(String nombre, String apellidos, String correo) {
+        datosPersonales.setNombre(nombre);
+        datosPersonales.setApellidos(apellidos);
+        datosPersonales.setCorreo(correo);
+        // Lógica adicional si es necesario
     }
 
-    private int findEmpleado(int a){
+    // Método para agregar un contrato a un empleado
+    public void addContrato(int NoContrato, int annio, String horario, Cargos tipoCargo) {
+        contrato.setNoContrato(NoContrato);
+        contrato.setAnnio(annio);
+        contrato.setHorario(horario);
+        contrato.setTipoCargo(tipoCargo);
+        // Lógica adicional si es necesario
+    }
+
+    // Método para buscar un empleado por su identificador
+    private int findEmpleado(int id) {
+        // Lógica de búsqueda
         return 1;
     }
-    private int findEmpleado(String a){
+
+    // Método para buscar un empleado por su nombre
+    private int findEmpleado(String nombre) {
+        // Lógica de búsqueda
         return 2;
     }
-    public void setWhatsap(int a, String b){
-        //
+
+    // Método para establecer el número de Whatsapp de un empleado
+    public void setWhatsapp(int id, String whatsapp) {
+        // Lógica para establecer el Whatsapp
     }
 
-    private String datosPersonales(int a){
+    // Método para obtener los datos personales de un empleado por su identificador
+    private String datosPersonales(int id) {
+        // Lógica para obtener los datos personales
         return "a";
     }
-    public String getInfoEmpleado(int a){
+
+    // Método para obtener la información de un empleado por su identificador
+    public String getInfoEmpleado(int id) {
+        // Lógica para obtener la información del empleado
         return "b";
     }
 
-        @java.lang.Override
-        public String getInfoEmpleado(String a) {
-            return null;
-        }
+    @Override
+    public String getInfoEmpleado(String nombre) {
+        // Lógica para obtener la información del empleado
+        return null;
+    }
 
-        public String getInfoEmpleado(String a){
-        return "c";
+    // Método para obtener la información de un empleado por su nombre y apellidos
+    public String getInfoEmpleado(String nombre, String apellidos) {
+        // Lógica para obtener la información del empleado
+        return "b";
     }
-    public void setAdscripcion(int a,String b){
-        //
+
+    // Métodos para establecer datos empresariales de un empleado
+    public void setAdscripcion(int id, String adscripcion) {
+        // Lógica para establecer la adscripción
     }
-    public void setTelefonoExtension(int a,String b){
-        //
+
+    public void setTelefonoExtension(int id, String telefonoExtension) {
+        // Lógica para establecer el teléfono de extensión
     }
-    public void setPuesto(int a,String b){
-        //
+
+    public void setPuesto(int id, String puesto) {
+        // Lógica para establecer el puesto
     }
-    public void showDatosEmpleado(){
-        //
+
+    // Método para mostrar los datos de un empleado
+    public void showDatosEmpleado() {
+        // Lógica para mostrar los datos del empleado
     }
-    public void showContradosEmpleado(int a){
+
+    // Método para mostrar los contratos de un empleado por su identificador
+    public void showContradosEmpleado(int id) {
+        // Lógica para mostrar los contratos del empleado
     }
-    public int getAntiguedad(int a){
+
+    // Método para obtener la antigüedad de un empleado por su identificador
+    public int getAntiguedad(int id) {
+        // Lógica para obtener la antigüedad del empleado
         return 3;
     }
-    public int getAntiguedad(){
+
+    // Método para obtener la antigüedad de un empleado
+    public int getAntiguedad() {
+        // Lógica para obtener la antigüedad del empleado
         return 4;
     }
-    public void setCargo(Cargos a){
-        //
+
+    // Método para establecer el cargo de un empleado
+    public void setCargo(Cargos cargo) {
+        // Lógica para establecer el cargo del empleado
     }
 }

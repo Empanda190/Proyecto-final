@@ -2,17 +2,20 @@ package Gestor.Archivo;
 import Gestor.Archivo.iFileText;
 import java.io.*;
 
+import java.io.*;
+
 public final class ArchivoTexto extends ControlArchivos implements iFileText {
     private File file;
     private FileReader fr;
     private BufferedReader br; // leer el archivo
     private FileWriter fw; // prepara el archivo para escritura
-    private BufferedWriter bw; //buffer es un fragmento pequeño de memoria, guarda lo que sea
+    private BufferedWriter bw; // buffer es un fragmento pequeño de memoria, guarda lo que sea
     private boolean ArchivoExiste;
     private boolean ModoLectura;
     private boolean ModoEscritura;
 
-    //Estos metodos son de la interaz
+    // Métodos de la interfaz
+    // Método para abrir el archivo en modo lectura
     public void AbrirModoLectura(){
         if (ArchivoExiste==true) {
             try {
@@ -20,7 +23,6 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
                 br = new BufferedReader(this.fr);
                 this.ModoEscritura=true;
                 System.out.println("Archivo abierto en modo lectura");
-
             }
             catch(FileNotFoundException e) {
                 System.out.println("Error específico: El archivo no se puede abrir en modo lectura: ***" + e.getMessage() + "***");
@@ -30,6 +32,8 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
             }
         }
     }
+
+    // Método para leer una línea del archivo
     public String leer(){
         if (ArchivoExiste==true) {
             try {
@@ -41,6 +45,7 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
         return null;
     }
 
+    // Método para leer y mostrar todas las líneas del archivo
     public void leer2(){
         if (ArchivoExiste==true) {
             try {
@@ -58,6 +63,7 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
         }
     }
 
+    // Método para abrir el archivo en modo escritura
     public void AbrirModoEscritura(){
         if (ArchivoExiste==true) {
             try {
@@ -70,6 +76,8 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
             }
         }
     }
+
+    // Método para escribir en el archivo
     public void escribir(String a){
         if (ArchivoExiste==true) {
             try {
@@ -79,6 +87,8 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
             }
         }
     }
+
+    // Método para cerrar el archivo
     public void cerrar(){
         if (ModoEscritura==true){
             try {
@@ -94,7 +104,10 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
             }catch (Exception e) { }
         }
     }
-    //Metodos de la clase
+
+    // Métodos de la clase
+
+    // Constructor para crear un nuevo archivo
     public ArchivoTexto(String tituloArchivo) {
         //instanciar de la clase base
         super(tituloArchivo);
@@ -114,6 +127,8 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
             //System.out.println();
         }
     }
+
+    // Constructor para abrir un archivo existente en modo lectura o escritura
     public ArchivoTexto(String a, boolean b){
         //instanciar de la clase base
         super(a);
