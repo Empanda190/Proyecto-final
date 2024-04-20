@@ -117,5 +117,22 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
     public ArchivoTexto(String a, boolean b){
         //instanciar de la clase base
         super(a);
+        try {
+            if (b) {
+                // Abre el archivo en modo de escritura
+                FileWriter writer = new FileWriter(a);
+                this.bw = new BufferedWriter(writer);
+                this.ModoEscritura = true;
+            } else {
+                // Abre el archivo en modo de lectura
+                FileReader reader = new FileReader(a);
+                this.br = new BufferedReader(reader);
+                this.ModoLectura = true;
+            }
+            this.ArchivoExiste = true;
+        } catch (IOException e) {
+            System.out.println("Error al intentar abrir el archivo: " + e.getMessage());
+            this.ArchivoExiste = false;
+        }
     }
 }
