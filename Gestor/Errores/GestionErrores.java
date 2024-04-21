@@ -77,4 +77,6 @@ public final class GestionErrores {
     public boolean ExisteError(){
         return ExisteError;
     }
+
+
 }

@@ -1,4 +1,7 @@
+import Gestor.Archivo.ArchivoTexto;
 import Gestor.Empresarial.Empleados.Empleados;
+import Gestor.Errores.GestionErrores;
+
 
 import java.util.Scanner;
 import java.util.*;
@@ -13,6 +16,35 @@ public class Principal_Menu {
         String correo;
         int id;
         String adsc;
+
+        GestionErrores gestionErrores = new GestionErrores();
+
+        Scanner sc = new Scanner (System.in);
+        String opc;
+        do {
+
+            System.out.println("\t *****SYSTEM****** \n");
+            System.out.println("\t Ingrese Usuario: ");
+            String user =sc.nextLine();
+            if(user.equals("Javier")){
+                System.out.println("\t Ingrese Contrasennia: \n");
+                String password =sc.nextLine();
+                if (password.equals("1234")){
+
+                }
+                else {
+                    String mensaje = gestionErrores.getErrorTecnico();
+                }
+            }
+            else {
+                System.out.println("Usuario Incorrecto ");
+                String mensaje = gestionErrores.getErrorTecnico();
+            }
+
+            System.out.println("Desea Continuar? (S/N): \n");
+            opc =sc.nextLine();
+        }while ((opc.equals("n"))||(opc.equals("n")));
+
 
         do {
             System.out.println("Menú:");
@@ -50,7 +82,9 @@ public class Principal_Menu {
 
                     break;
                 case 3:
-                    //Pricipal_Contrato contratto= new Pricipal_Contrato();
+                    // Crear objeto ArchivoTexto para manejar archivos de texto
+                    ArchivoTexto file1 = new ArchivoTexto("C:\\Users\\Javier\\OneDrive\\POO\\Proyecto-Final");
+                    String linea;
                     break;
                 case 4:
                     System.out.println("¡Hasta luego!");
