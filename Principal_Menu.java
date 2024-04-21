@@ -50,7 +50,7 @@ public class Principal_Menu {
 
                     break;
                 case 3:
-                    Pricipal_Contrato contratto= new Pricipal_Contrato();
+                    //Pricipal_Contrato contratto= new Pricipal_Contrato();
                     break;
                 case 4:
                     System.out.println("¡Hasta luego!");
