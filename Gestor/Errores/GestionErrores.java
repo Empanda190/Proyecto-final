@@ -22,7 +22,7 @@ public final class GestionErrores {
         error = new HashMap<>();
 
         // Inicializamos el objeto para manejar archivos de texto
-        archivo = new ArchivoTexto("C:\\Users\\karls\\OneDrive\\Documents\\Universidad\\5to cuatrimestre\\Enero-Abril2024\\Proyecto_Final");
+        archivo = new ArchivoTexto("C:\\Users\\Javier\\OneDrive\\POO\\Proyecto-Final");
 
         // Inicializamos las descripciones de errores predefinidas
         listaErrores[0] = "Empleado no identificado";
