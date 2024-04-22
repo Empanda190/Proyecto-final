@@ -1,39 +1,52 @@
 package Gestor.Empresarial.Datos;
 
 // Clase final que representa datos empresariales, hereda de DatosPersonales
-public final class DatosEmpresariales extends DatosPersonales {
-    // Atributos
-    String adscripcion; // Variable para almacenar la adscripción del empleado
-    String TelefonoExterior; // Variable para almacenar el teléfono exterior del empleado
-    String puesto; // Variable para almacenar el puesto del empleado
+public final class DatosEmpresariales extends DatosPersonales{ //esta clase no ofrece herencia, solo instancia
+    private String adscripcion;
+    private String telefonoExtension;
+    private String puesto;
 
-    // Constructor
-    // Constructor que inicializa los datos empresariales con los valores recibidos
-    public DatosEmpresariales(){
-        int a = 0; // Este valor no se utiliza en el constructor
+    public DatosEmpresariales(int id, String nombre, String apellidos, String correo, String whatsapp) {
+        super.setId(id);
+        super.setNombre(nombre);
+        super.setApellidos(apellidos);
+        super.setCorreo(correo);
+        super.setWhatsApp(String.valueOf(whatsapp));
+
     }
 
-    // Métodos getter y setter para adscripcion
+    @Override
+    public int getId() {
+        return super.getId();
+    }
+
     public String getAdscripcion() {
+
         return adscripcion;
     }
+
     public void setAdscripcion(String adscripcion) {
+
         this.adscripcion = adscripcion;
     }
 
-    // Métodos getter y setter para TelefonoExterior
-    public String getTelefonoExterior() {
-        return TelefonoExterior;
-    }
-    public void setTelefonoExterior(String TelefonoExterior) {
-        this.TelefonoExterior = TelefonoExterior;
+    public String getTelefonoExtension() {
+
+        return telefonoExtension;
     }
 
-    // Métodos getter y setter para puesto
+    public void setTelefonoExtension(String telefonoExtension) {
+
+        this.telefonoExtension = telefonoExtension;
+    }
+
     public String getPuesto() {
+
         return puesto;
     }
+
     public void setPuesto(String puesto) {
+
         this.puesto = puesto;
     }
 }

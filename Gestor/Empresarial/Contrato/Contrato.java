@@ -16,7 +16,7 @@ public final class Contrato {
     private static List<Contrato> contratos = new ArrayList<>(); // Lista estática para almacenar todos los contratos
 
     // Constructor
-    public Contrato() {
+    public Contrato(int id) {
         error = new GestionErrores(); // Inicializar objeto para gestionar errores
     }
 
@@ -57,5 +57,13 @@ public final class Contrato {
     }
 
     public void setTipoCargo(Cargos tipoCargo) {
+    }
+
+    public int getId() {
+        return 0;
+    }
+
+    public String setTipoCargo() {
+        return null;
     }
 }

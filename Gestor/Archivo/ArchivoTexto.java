@@ -4,50 +4,90 @@ import java.io.*;
 
 import java.io.*;
 
-public final class ArchivoTexto extends ControlArchivos implements iFileText {
+public final class ArchivoTexto extends ControlArchivos implements iFileText{
     private File file;
     private FileReader fr;
-    private BufferedReader br; // leer el archivo
-    private FileWriter fw; // prepara el archivo para escritura
-    private BufferedWriter bw; // buffer es un fragmento pequeño de memoria, guarda lo que sea
-    private boolean ArchivoExiste;
-    private boolean ModoLectura;
-    private boolean ModoEscritura;
+    private BufferedReader br;
+    private FileWriter fw;
+    private BufferedWriter bw;
+    private boolean archivoExiste;
+    private boolean modoLectura;
+    private boolean modoEscritura;
 
-    // Métodos de la interfaz
+    // Constructor de la clase ArchivoTexto
+    public ArchivoTexto(String tituloArchivo) {
+        super(tituloArchivo); // Llama al constructor de la clase padre ControlArchivos
+        try {
+            file = new File(tituloArchivo);
+
+            if (!file.exists())
+                file.createNewFile();
+
+            this.archivoExiste = true;
+            this.modoLectura = false;
+            this.modoEscritura = false;
+        } catch (Exception e) {
+            System.out.println("Error al intentar buscar el archivo");
+            this.archivoExiste = false;
+        }
+    }
+
+    // Método para crear el archivo
+    @Override
+    public boolean Crear() {
+        if (file != null) {
+            try {
+                if (!file.exists()) {
+                    file.createNewFile();
+                    archivoExiste = true;
+                    return true;
+                }
+            } catch (IOException e) {
+                System.out.println("Error al crear el archivo");
+                archivoExiste = false;
+            }
+        }
+        return false;
+    }
+
+    // Constructor adicional para la clase ArchivoTexto
+    public ArchivoTexto(String tituloArchivo, boolean nuevo) {
+        super(tituloArchivo);
+    }
+
     // Método para abrir el archivo en modo lectura
-    public void AbrirModoLectura(){
-        if (ArchivoExiste==true) {
+    public void AbrirModoLectura() {
+        if (archivoExiste == true) {
             try {
                 fr = new FileReader(this.file.getAbsoluteFile());
                 br = new BufferedReader(this.fr);
-                this.ModoEscritura=true;
+                this.modoLectura = true;
                 System.out.println("Archivo abierto en modo lectura");
-            }
-            catch(FileNotFoundException e) {
-                System.out.println("Error específico: El archivo no se puede abrir en modo lectura: ***" + e.getMessage() + "***");
-            }
-            catch (Exception e) {
-                System.out.println("Error Generico: El archivo no se puede abrir en modo lectura: ***" + e.getMessage() + "***");
+            } catch (Exception e) {
+                System.out.println("Error: El archivo no se puede abrir en modo lectura");
             }
         }
     }
 
+    @Override
+    public String leer() {
+        return null;
+    }
+
     // Método para leer una línea del archivo
-    public String leer(){
-        if (ArchivoExiste==true) {
+    public String Leer() {
+        if (archivoExiste == true) {
             try {
                 return this.br.readLine();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
             }
         }
         return null;
     }
 
     // Método para leer y mostrar todas las líneas del archivo
-    public void leer2(){
-        if (ArchivoExiste==true) {
+    public void Leer2() {
+        if (archivoExiste == true) {
             try {
                 int i = 1;
                 String linea = this.br.readLine();
@@ -64,12 +104,12 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
     }
 
     // Método para abrir el archivo en modo escritura
-    public void AbrirModoEscritura(){
-        if (ArchivoExiste==true) {
+    public void AbrirModoEscritura() {
+        if (archivoExiste == true) {
             try {
-                fw = new FileWriter(this.file.getAbsoluteFile(),true);
+                fw = new FileWriter(this.file.getAbsoluteFile(), true);
                 bw = new BufferedWriter(this.fw);
-                ModoEscritura=true;
+                modoEscritura = true;
                 System.out.println("Archivo abierto en modo escritura");
             } catch (Exception e) {
                 System.out.println("Error: El archivo no se puede abrir en modo escritura");
@@ -77,11 +117,21 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
         }
     }
 
+    @Override
+    public void escribir(String a) {
+
+    }
+
+    @Override
+    public void cerrar() {
+
+    }
+
     // Método para escribir en el archivo
-    public void escribir(String a){
-        if (ArchivoExiste==true) {
+    public void Escribir(String texto) {
+        if (archivoExiste == true) {
             try {
-                this.bw.write("texto"+"\n");
+                this.bw.write(texto + "\n");
             } catch (Exception e) {
                 System.out.println("Error: No se puede escribir información en el archivo");
             }
@@ -89,65 +139,19 @@ public final class ArchivoTexto extends ControlArchivos implements iFileText {
     }
 
     // Método para cerrar el archivo
-    public void cerrar(){
-        if (ModoEscritura==true){
+    public void Cerrar() {
+        if (modoEscritura == true) {
             try {
                 this.bw.close();
                 this.fw.close();
-            }catch (Exception e){ }
-        }
-        else if (ModoLectura==true)
-        {
+            } catch (Exception e) {
+            }
+        } else if (modoLectura == true) {
             try {
                 this.br.close();
                 this.fr.close();
-            }catch (Exception e) { }
-        }
-    }
-
-    // Métodos de la clase
-
-    // Constructor para crear un nuevo archivo
-    public ArchivoTexto(String tituloArchivo) {
-        //instanciar de la clase base
-        super(tituloArchivo);
-        try {
-            file = new File(tituloArchivo);
-
-            if (!file.exists())
-                file.createNewFile();
-
-            this.ArchivoExiste=true;
-            this.ModoLectura=false;
-            this.ModoEscritura=false;
-        }
-        catch (Exception e){
-            System.out.println("Error al intentar buscar el archivo: ***" + e.getMessage()+"***");
-            this.ArchivoExiste=false;
-            //System.out.println();
-        }
-    }
-
-    // Constructor para abrir un archivo existente en modo lectura o escritura
-    public ArchivoTexto(String a, boolean b){
-        //instanciar de la clase base
-        super(a);
-        try {
-            if (b) {
-                // Abre el archivo en modo de escritura
-                FileWriter writer = new FileWriter(a);
-                this.bw = new BufferedWriter(writer);
-                this.ModoEscritura = true;
-            } else {
-                // Abre el archivo en modo de lectura
-                FileReader reader = new FileReader(a);
-                this.br = new BufferedReader(reader);
-                this.ModoLectura = true;
+            } catch (Exception e) {
             }
-            this.ArchivoExiste = true;
-        } catch (IOException e) {
-            System.out.println("Error al intentar abrir el archivo: " + e.getMessage());
-            this.ArchivoExiste = false;
         }
     }
 }

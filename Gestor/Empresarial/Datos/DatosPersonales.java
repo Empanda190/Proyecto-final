@@ -1,51 +1,56 @@
 package Gestor.Empresarial.Datos;
 
 // Clase abstracta que representa datos personales
-public class DatosPersonales {
-    // Atributos
-    int id; // Identificador único de la persona
-    String nombre; // Nombre de la persona
-    String apellidos; // Apellidos de la persona
-    String correo; // Correo electrónico de la persona
-    String whatsapp; // Número de WhatsApp de la persona
+public abstract class DatosPersonales { //Esta clase no ofrece instancia, solo puede ofrecer herencia
+    private int id;
+    private String nombre;
+    private String apellidos;
+    private String correo;
+    private String whatsapp;
 
-    // Métodos getter y setter para id
-    protected int getId() {
+    public int getId() {
         return id;
     }
-    protected void setId(int id) {
+
+    public void setId(int id) {
         this.id = id;
     }
 
-    // Métodos getter y setter para nombre
-    protected String getNombre() {
+    public String getNombre() {
+
         return nombre;
     }
+
     public void setNombre(String nombre) {
+
         this.nombre = nombre;
     }
 
-    // Métodos getter y setter para apellidos
-    protected String getApellidos() {
+    public String getApellidos() {
+
         return apellidos;
     }
+
     public void setApellidos(String apellidos) {
+
         this.apellidos = apellidos;
     }
 
-    // Métodos getter y setter para correo
-    protected String getCorreo() {
+    public String getCorreo() {
+
         return correo;
     }
+
     public void setCorreo(String correo) {
+
         this.correo = correo;
     }
 
-    // Métodos getter y setter para whatsapp
-    protected String getWhatsapp() {
+    public String getWhatsApp() {
         return whatsapp;
     }
-    protected void setWhatsapp(String whatsapp) {
+
+    public void setWhatsApp(String whatsapp) {
         this.whatsapp = whatsapp;
     }
 }

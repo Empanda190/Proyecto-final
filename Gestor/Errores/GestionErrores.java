@@ -79,4 +79,7 @@ public final class GestionErrores {
     }
 
 
+    public String getDescripcionTecnica(int i) {
+        return null;
+    }
 }
